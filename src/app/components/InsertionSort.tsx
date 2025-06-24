@@ -49,7 +49,7 @@ export default function InsertionSort() {
                                     className="px-3 py-1 m-1 text-white bg-gray-500 rounded hover:bg-gray-600"
                                     onClick={ generateNewArray }
                               >
-                                    Update # of Elements
+                                    New Elements
                               </button>
                         </form>
 
@@ -61,3 +61,5 @@ export default function InsertionSort() {
             </>
       )
 }
+
+// include in commit/PR
