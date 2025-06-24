@@ -17,7 +17,7 @@ export function insertionSort(
                   console.log(`Shifting ${ newArray[ j ] } to the right`)
 
                   // TODO record state, comparing values
-                  
+
                   newArray[ j + 1 ] = newArray[ j ]
                   j--
             }
@@ -32,5 +32,3 @@ export function insertionSort(
 
       return newArray
 }
-
-// include in commit/PR

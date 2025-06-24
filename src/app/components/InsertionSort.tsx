@@ -61,5 +61,3 @@ export default function InsertionSort() {
             </>
       )
 }
-
-// include in commit/PR
