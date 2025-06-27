@@ -34,8 +34,33 @@ export const quickSortAlgorithm: Algorithm = {
       path: '/quick-sort'
 }
 
-export const sortAlgorithms = [
+export const sortAlgorithms: Algorithm[] = [
       bubbleSortAlgorithm,
       insertionSortAlgorithm,
       quickSortAlgorithm
 ]
+
+
+// export const sortAlgorithms = {
+//       quickSort: {
+//             name: 'Quick Sort',
+//             algorithm: quickSort,
+//             timeComplexity: 'O(n log n)',
+//             spaceComplexity: 'O(log n)',
+//             path: '/quick-sort'
+//       },
+//       insertionSort: {
+//             name: 'Insertion Sort',
+//             algorithm: insertionSort,
+//             timeComplexity: 'O(n^2)',
+//             spaceComplexity: 'O(1)',
+//             path: '/insertion-sort'
+//       },
+//       bubbleSort: {
+//             name: 'Bubble Sort',
+//             algorithm: bubbleSort,
+//             timeComplexity: 'O(n^2)',
+//             spaceComplexity: 'O(1)',
+//             path: '/bubble-sort'
+//       }
+// }

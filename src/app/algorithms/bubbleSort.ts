@@ -3,32 +3,38 @@ export function bubbleSort(
       onStateChange?: (arr: number[]) => void
 ): number[] {
       let newArr: number[] = structuredClone(arr)
+      let sorting = true; let swapCounter = 0
+      console.log('\n[ALGORITHM] Array of length', arr.length, 'received from React')
 
-      for (let i = 1; i < arr.length; i++) { // iterate through each element once
-            let currentValue = newArr[ i ]
-            let j = i - 1
+      while (sorting) { // Iterate through for loop until a while loop iteration contains zero swaps
+            swapCounter = 0
+            for (let i = 0; i < arr.length - 1; i++) { // Iterate through each element pair in array
+                  console.log('\nCurrent array:', [ ...newArr ])
+                  let j = i + 1
+                  let leftElement = newArr[ i ]
+                  let rightElement = newArr[ j ]
+                  console.log(`Comparing ${ leftElement } and ${ rightElement } (positions ${ i } and ${ j })`)
 
-            console.log(`\nInserting ${ currentValue } into sorted portion`)
-            console.log("Current array:", [ ...newArr ])
-
-            // TODO record state, selecting element(s)
-
-            while (j >= 0 && newArr[ j ] > currentValue) { // iterate through elements next to current element
-                  console.log(`Shifting ${ newArr[ j ] } to the right`)
-
-                  // TODO record state, comparing values
-
-                  newArr[ j + 1 ] = newArr[ j ]
-                  j--
+                  // Compare right and left elements
+                  if (newArr[ i ] > newArr[ j ]) {
+                        console.log(`Result: ${ newArr[ i ] } > ${ newArr[ j ] }, so positions will be swapped by shifting ${ newArr[ i ] } to the right`)
+                        newArr[ j ] = leftElement
+                        newArr[ i ] = rightElement
+                        console.log("New array:", newArr)
+                        swapCounter++
+                        console.log('Swap made, adding to counter:', swapCounter)
+                  } else {
+                        console.log(`Result: ${ newArr[ i ] } ≤ ${ newArr[ j ] }, so positions and swapCounter will be maintained`)
+                        continue
+                  }
             }
-
-            newArr[ j + 1 ] = currentValue
-            console.log("Final array:", newArr)
-
-            // TODO record state, after swapping elements
+            // Check if while loop iteration contained any swaps
+            if (swapCounter === 0) {
+                  console.log('\nswapCounter = 0, so exiting while loop\nFinal sorted array:', newArr)
+                  sorting = false
+                  return newArr
+            } else console.log('\nswapCounter =', swapCounter, 'which is > 0\nStarting new iteration of while loop')
       }
-
-      // TODO record state, final state
-
-      return newArr
+      console.log('[ALGORITHM] Error using Bubble Sort, returning original array:', arr)
+      return arr
 }

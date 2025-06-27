@@ -1,10 +1,10 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-import { insertionSortAlgorithm } from '../algorithms'
+import { sortAlgorithms } from '../algorithms'
 import clsx from 'clsx'
 
-export default function InsertionSort() {
+export default function BarSort(algorithm: string, arr: number[]) {
       const [ elementArray, setElementArray ] = useState<number[]>([])
       const [ elementCount, setElementCount ] = useState(5)
       const [ elementValueCeiling, setElementValueCeiling ] = useState<number>(25)
@@ -29,8 +29,11 @@ export default function InsertionSort() {
       }
 
       function getSortedArray() {
-            const sortedArray = insertionSortAlgorithm.algorithm(elementArray)
-            setElementArray(sortedArray)
+            // ▶️ { insertionSortAlgorithm.name } ◀️
+            // 🫧 { bubbleSortAlgorithm.name } 🫧
+            // const algorithm = sortAlgorithms.
+            // const sortedArray = sortAlgorithms[algorithm].algorithm(elementArray)
+            // setElementArray(sortedArray)
       }
 
       return (
@@ -50,7 +53,7 @@ export default function InsertionSort() {
                         onClick={ getSortedArray }
                   >Start Algorithm 
                         <div className="text-[12px]">
-                              ▶️ { insertionSortAlgorithm.name } ◀️
+                              {/* ▶️ { insertionSortAlgorithm.name } ◀️ */}
                         </div>     
                   </button>
                   <form className="flex flex-row p-3 gap-6 m-2 border " onSubmit={ e => e.preventDefault }>

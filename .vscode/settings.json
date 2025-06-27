@@ -18,5 +18,18 @@
             "titleBar.inactiveBackground": "#83256199",
             "titleBar.inactiveForeground": "#e7e7e799"
       },
-      "peacock.color": "#832561"
+      "peacock.color": "#832561",
+      "tailwindCSS.enable": false,
+      "tailwindCSS.sortOnSave": false,
+      "tailwindCSS.experimental.classRegex": [],
+      "tailwindCSS.validate": false,
+      "tailwindCSS.lint.cssConflict": "ignore",
+      "tailwindCSS.lint.invalidApply": "ignore",
+      "tailwindCSS.lint.invalidConfigPath": "ignore",
+      "tailwindCSS.lint.invalidScreen": "ignore",
+      "tailwindCSS.lint.invalidTailwindDirective": "ignore",
+      "tailwindCSS.lint.invalidVariant": "ignore",
+      "editor.formatOnSave": false,
+      "editor.formatOnPaste": false,
+      "editor.formatOnType": false
 }
