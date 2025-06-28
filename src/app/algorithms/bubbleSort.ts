@@ -3,12 +3,14 @@ export function bubbleSort(
       onStateChange?: (arr: number[]) => void
 ): number[] {
       let newArr: number[] = structuredClone(arr)
-      let sorting = true; let swapCounter = 0
+      let sorting = true; let swapCounter = 0; let soph = 0
       console.log('\n[ALGORITHM] Array of length', arr.length, 'received from React')
 
       while (sorting) { // Iterate through for loop until a while loop iteration contains zero swaps
             swapCounter = 0
             for (let i = 0; i < arr.length - 1; i++) { // Iterate through each element pair in array
+                  soph++
+                  console.log('SOPHMRETER:',soph)
                   console.log('\nCurrent array:', [ ...newArr ])
                   let j = i + 1
                   let leftElement = newArr[ i ]
