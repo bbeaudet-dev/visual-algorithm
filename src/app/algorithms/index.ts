@@ -4,15 +4,25 @@ import { quickSort } from './quickSort'
 
 export type Algorithm = {
       name: string
-      algorithm: (arr: number[]) => number[]
+      algorithmName: string
       timeComplexity: string
       spaceComplexity: string
       path: string
 }
 
+// New interface for algorithms with progress reporting
+export type AlgorithmWithProgress = {
+      name: string
+      algorithmName: string
+      timeComplexity: string
+      spaceComplexity: string
+      path: string
+      algorithm: (arr: number[], onProgress?: (step: number) => void) => { sortedArray: number[], stepCount: number }
+}
+
 export const bubbleSortAlgorithm: Algorithm = {
       name: 'Bubble Sort',
-      algorithm: bubbleSort,
+      algorithmName: 'bubbleSort',
       timeComplexity: 'O(n^2)',
       spaceComplexity: 'O(1)',
       path: '/bubble-sort'
@@ -20,7 +30,7 @@ export const bubbleSortAlgorithm: Algorithm = {
 
 export const insertionSortAlgorithm: Algorithm = {
       name: 'Insertion Sort',
-      algorithm: insertionSort,
+      algorithmName: 'insertionSort',
       timeComplexity: 'O(n^2)',
       spaceComplexity: 'O(1)',
       path: '/insertion-sort'
@@ -28,7 +38,7 @@ export const insertionSortAlgorithm: Algorithm = {
 
 export const quickSortAlgorithm: Algorithm = {
       name: 'Quick Sort',
-      algorithm: quickSort,
+      algorithmName: 'quickSort',
       timeComplexity: 'O(n log n)',
       spaceComplexity: 'O(log n)',
       path: '/quick-sort'
@@ -39,6 +49,12 @@ export const sortAlgorithms: Algorithm[] = [
       insertionSortAlgorithm,
       quickSortAlgorithm
 ]
+// Client-side algorithm functions with progress reporting
+export const clientAlgorithms = {
+      bubbleSort: (arr: number[], onProgress?: (step: number) => void) => bubbleSort(arr, onProgress),
+      insertionSort: (arr: number[], onProgress?: (step: number) => void) => insertionSort(arr, onProgress),
+      quickSort: (arr: number[], onProgress?: (step: number) => void) => quickSort(arr, onProgress)
+}
 
 
 // export const sortAlgorithms = {
