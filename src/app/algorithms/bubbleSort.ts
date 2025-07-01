@@ -3,23 +3,14 @@ export function bubbleSort(arr: number[], onProgress?: (step: number) => void): 
       let sorting = true; let swapCounter = 0; let stepCounter = 0
       console.log('\n[ALGORITHM] Array of length', arr.length, 'received from React')
 
-      // Speed control: max 1000 steps per second
-      const maxStepsPerSecond = 1000
-      const minDelayMs = 1000 / maxStepsPerSecond
-
       while (sorting) { // Iterate through for loop until a while loop iteration contains zero swaps
             swapCounter = 0
             for (let i = 0; i < arr.length - 1; i++) { // Iterate through each element pair in array
                   stepCounter++
                   
-                  // Report progress every step with speed control
+                  // Report progress every step
                   if (onProgress) {
                         onProgress(stepCounter)
-                        // Add delay to control speed
-                        const start = Date.now()
-                        while (Date.now() - start < minDelayMs) {
-                              // Busy wait to control speed
-                        }
                   }
                   
                   console.log('\nstepCounter:',stepCounter)

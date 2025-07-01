@@ -3,10 +3,6 @@ export function quickSort(arr: number[], onProgress?: (step: number) => void): {
       let stepCounter = 0
       console.log('\n[ALGORITHM] Array of length', arr.length, 'received from React')
 
-      // Speed control: max 1000 steps per second
-      const maxStepsPerSecond = 1000
-      const minDelayMs = 1000 / maxStepsPerSecond
-
       function quickSortHelper(array: number[]): number[] {
             if (array.length <= 1) {
                   return array
@@ -14,14 +10,9 @@ export function quickSort(arr: number[], onProgress?: (step: number) => void): {
 
             stepCounter++
             
-            // Report progress every step with speed control
+            // Report progress every step
             if (onProgress) {
                   onProgress(stepCounter)
-                  // Add delay to control speed
-                  const start = Date.now()
-                  while (Date.now() - start < minDelayMs) {
-                        // Busy wait to control speed
-                  }
             }
             
             const pivot = array[Math.floor(array.length / 2)]
