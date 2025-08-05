@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo } from 'react'
-import { Algorithm, clientAlgorithms } from '../algorithms'
+import { Algorithm } from '../algorithms'
 import { bubbleSort, bubbleSortAnimated, bubbleSortUtils } from '../algorithms/bubbleSort'
 import { insertionSort, insertionSortAnimated, insertionSortUtils } from '../algorithms/insertionSort'
 import ImageAnalyzer from './ImageAnalyzer'
@@ -59,7 +59,6 @@ export default function SortingVisualizer({
                   case 'quickSort':
                         return (
                               <QuickSortVisualizer
-                                    algorithm={algorithm}
                                     initialArray={initialArray}
                                     elementValueCeiling={elementValueCeiling}
                                     buttonDisplay={buttonDisplay}
@@ -71,7 +70,6 @@ export default function SortingVisualizer({
                   case 'bubbleSort':
                         return (
                               <BasicSortVisualizer
-                                    algorithm={algorithm}
                                     initialArray={initialArray}
                                     elementValueCeiling={elementValueCeiling}
                                     animatedGenerator={bubbleSortAnimated}
@@ -86,7 +84,6 @@ export default function SortingVisualizer({
                   case 'insertionSort':
                         return (
                               <BasicSortVisualizer
-                                    algorithm={algorithm}
                                     initialArray={initialArray}
                                     elementValueCeiling={elementValueCeiling}
                                     animatedGenerator={insertionSortAnimated}

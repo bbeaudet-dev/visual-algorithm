@@ -1,4 +1,3 @@
-import { Algorithm } from '../algorithms'
 import { SortingStep } from '../algorithms/bubbleSort'
 import { useAnimationControls } from '../hooks/useAnimationControls'
 import AnimationControls from './AnimationControls'
@@ -11,7 +10,6 @@ interface AlgorithmUtils {
 }
 
 interface BasicSortVisualizerProps {
-      algorithm: Algorithm
       initialArray: number[]
       elementValueCeiling: number
       animatedGenerator: (arr: number[]) => Generator<SortingStep, void, unknown>
@@ -22,7 +20,6 @@ interface BasicSortVisualizerProps {
 }
 
 export default function BasicSortVisualizer({
-      algorithm,
       initialArray,
       elementValueCeiling,
       animatedGenerator,

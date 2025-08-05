@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import { Algorithm } from '../algorithms'
 import { quickSort, quickSortAnimated, quickSortUtils } from '../algorithms/quickSort'
 import { useAnimationControls } from '../hooks/useAnimationControls'
 import AnimationControls from './AnimationControls'
@@ -7,7 +6,6 @@ import SpeedControl from './SpeedControl'
 import AlgorithmLegend from './AlgorithmLegend'
 
 interface QuickSortVisualizerProps {
-      algorithm: Algorithm
       initialArray: number[]
       elementValueCeiling: number
       buttonDisplay?: React.ReactNode // Algorithm name display
@@ -15,7 +13,6 @@ interface QuickSortVisualizerProps {
 }
 
 export default function QuickSortVisualizer({
-      algorithm,
       initialArray,
       elementValueCeiling,
       buttonDisplay,
