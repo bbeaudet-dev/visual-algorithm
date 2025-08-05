@@ -17,12 +17,8 @@ export function insertionSort(arr: number[], onProgress?: (step: number) => void
             let j = i - 1
             console.log(`Inserting ${ currentValue } into sorted portion`)
 
-            // TODO record state, selecting element(s)
-
             while (j >= 0 && newArr[ j ] > currentValue) { // iterate through elements next to current element
                   console.log(`Shifting ${ newArr[ j ] } to the right`)
-
-                  // TODO record state, comparing values
 
                   newArr[ j + 1 ] = newArr[ j ]
                   j--
@@ -30,11 +26,7 @@ export function insertionSort(arr: number[], onProgress?: (step: number) => void
 
             newArr[ j + 1 ] = currentValue
             console.log("New array:", newArr)
-
-            // TODO record state, after swapping elements
       }
-
-      // TODO record state, final state
 
       console.log("\n[ALGORITHM] Final sorted array:", newArr)
       
@@ -141,6 +133,11 @@ export function* insertionSortAnimated(arr: number[]): Generator<SortingStep, vo
             }
       }
 
+      // Mark all elements as completed for final state
+      for (let i = 0; i < newArr.length; i++) {
+            completed.add(i)
+      }
+
       // Yield final completed state
       yield {
             array: [...newArr],
@@ -148,4 +145,42 @@ export function* insertionSortAnimated(arr: number[]): Generator<SortingStep, vo
             stepCount: stepCounter,
             isComplete: true
       }
+}
+
+// Insertion Sort specific utilities
+export const insertionSortUtils = {
+      getBarColor: (index: number, currentStep: SortingStep | null, isSorted: boolean): string => {
+            if (!currentStep) {
+                  return isSorted ? 'bg-green-500' : 'bg-black'
+            }
+            
+            // Priority: swapping > comparing > selecting > completed > default
+            // Active operations override completion status so sorted elements can change color
+            
+            if (currentStep.swapping && currentStep.swapping.includes(index)) {
+                  return 'bg-red-500'
+            }
+            
+            if (currentStep.comparing && currentStep.comparing.includes(index)) {
+                  return 'bg-yellow-500'
+            }
+            
+            if (currentStep.selecting !== undefined && currentStep.selecting === index) {
+                  return 'bg-purple-500'
+            }
+            
+            if (currentStep.completed && currentStep.completed.includes(index)) {
+                  return 'bg-green-500'
+            }
+            
+            return 'bg-blue-500'
+      },
+      
+      legend: [
+            { color: 'bg-blue-500', label: 'Unsorted' },
+            { color: 'bg-green-500', label: 'Sorted' },
+            { color: 'bg-purple-500', label: 'Current Element' },
+            { color: 'bg-yellow-500', label: 'Comparing' },
+            { color: 'bg-red-500', label: 'Swapping' },
+      ]
 }

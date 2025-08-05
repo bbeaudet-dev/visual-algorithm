@@ -64,6 +64,13 @@ export interface SortingStep {
       selecting?: number
       shifting?: number       // For bubble sort shifting
       insertingAt?: number    // For insertion sort final insertion
+      
+      // Quick Sort specific
+      pivotIndex?: number           // Current pivot
+      activeRange?: [number, number] // Current subarray being processed [start, end]
+      partitionBoundary?: number    // Where partition split happens
+      partitioning?: boolean        // Currently in partitioning phase
+      
       completed?: number[]
       stepCount: number
       isComplete?: boolean
@@ -144,4 +151,35 @@ export function* bubbleSortAnimated(arr: number[]): Generator<SortingStep, void,
             stepCount: stepCounter,
             isComplete: true
       }
+}
+
+// Bubble Sort specific utilities
+export const bubbleSortUtils = {
+      getBarColor: (index: number, currentStep: SortingStep | null, isSorted: boolean): string => {
+            if (!currentStep) {
+                  return isSorted ? 'bg-green-500' : 'bg-black'
+            }
+            
+            // Priority: swapping > comparing > completed > default
+            if (currentStep.swapping && currentStep.swapping.includes(index)) {
+                  return 'bg-red-500'
+            }
+            
+            if (currentStep.comparing && currentStep.comparing.includes(index)) {
+                  return 'bg-yellow-500'
+            }
+            
+            if (currentStep.completed && currentStep.completed.includes(index)) {
+                  return 'bg-green-500'
+            }
+            
+            return 'bg-blue-500'
+      },
+      
+      legend: [
+            { color: 'bg-blue-500', label: 'Unsorted' },
+            { color: 'bg-green-500', label: 'Sorted' },
+            { color: 'bg-yellow-500', label: 'Comparing' },
+            { color: 'bg-red-500', label: 'Swapping' },
+      ]
 }
