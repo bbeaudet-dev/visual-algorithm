@@ -69,7 +69,7 @@ export default function QuickSortVisualizer({
                   <AlgorithmLegend legend={quickSortUtils.legend} />
 
                   {/* Bars container with visual separators */}
-                  <div ref={containerRef} className="w-full max-w-[84rem] mb-8">
+                  <div ref={containerRef} className="w-full max-w-6xl mb-8">
                         <ul className='flex flex-row items-center justify-center gap-0.25 relative'>
                               {elementArray.map((element, index) => {
                                     const barWidth = Math.max(4, Math.min(12, 1050 / elementArray.length))
