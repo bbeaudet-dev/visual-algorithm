@@ -55,3 +55,93 @@ export function bubbleSort(arr: number[], onProgress?: (step: number) => void): 
       
       return { sortedArray: arr, stepCount: stepCounter }
 }
+
+// Types for animation steps (shared across sorting algorithms)
+export interface SortingStep {
+      array: number[]
+      comparing?: [number, number]
+      swapping?: [number, number]
+      selecting?: number
+      shifting?: number       // For bubble sort shifting
+      insertingAt?: number    // For insertion sort final insertion
+      completed?: number[]
+      stepCount: number
+      isComplete?: boolean
+}
+
+// Animated version of bubble sort that yields each step
+export function* bubbleSortAnimated(arr: number[]): Generator<SortingStep, void, unknown> {
+      const newArr: number[] = [...arr]
+      const completed: Set<number> = new Set()
+      let sorting = true
+      let stepCounter = 0
+      let passCount = 0
+
+      while (sorting) {
+            let swapCounter = 0
+            
+            for (let i = 0; i < newArr.length - 1 - passCount; i++) {
+                  stepCounter++
+                  const j = i + 1
+                  
+                  // Yield comparison step
+                  yield {
+                        array: [...newArr],
+                        comparing: [i, j] as [number, number],
+                        completed: Array.from(completed),
+                        stepCount: stepCounter,
+                        isComplete: false
+                  }
+
+                  // Compare and swap if needed
+                  if (newArr[i] > newArr[j]) {
+                        // Yield swapping step
+                        yield {
+                              array: [...newArr],
+                              swapping: [i, j] as [number, number],
+                              completed: Array.from(completed),
+                              stepCount: stepCounter,
+                              isComplete: false
+                        }
+                        
+                        // Perform the swap
+                        const temp = newArr[i]
+                        newArr[i] = newArr[j]
+                        newArr[j] = temp
+                        swapCounter++
+                        
+                        // Yield post-swap state
+                        yield {
+                              array: [...newArr],
+                              completed: Array.from(completed),
+                              stepCount: stepCounter,
+                              isComplete: false
+                        }
+                  }
+            }
+            
+            // Mark the last element of this pass as completed
+            const lastElementIndex = newArr.length - 1 - passCount
+            if (lastElementIndex >= 0) {
+                  completed.add(lastElementIndex)
+            }
+            passCount++
+            
+            // Check if sorting is complete
+            if (swapCounter === 0) {
+                  sorting = false
+                  // Mark all remaining elements as completed
+                  for (let i = 0; i < newArr.length; i++) {
+                        completed.add(i)
+                  }
+            }
+      }
+
+      // Yield final completed state
+      yield {
+            array: [...newArr],
+            completed: Array.from(completed),
+            stepCount: stepCounter,
+            isComplete: true
+      }
+}
