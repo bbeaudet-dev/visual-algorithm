@@ -166,7 +166,7 @@ export const insertionSortUtils = {
             }
             
             if (currentStep.selecting !== undefined && currentStep.selecting === index) {
-                  return 'bg-purple-500'
+                  return 'bg-purple-700'
             }
             
             if (currentStep.completed && currentStep.completed.includes(index)) {
@@ -179,7 +179,7 @@ export const insertionSortUtils = {
       legend: [
             { color: 'bg-blue-500', label: 'Unsorted' },
             { color: 'bg-green-500', label: 'Sorted' },
-            { color: 'bg-purple-500', label: 'Current Element' },
+            { color: 'bg-purple-700', label: 'Current Element' },
             { color: 'bg-yellow-500', label: 'Comparing' },
             { color: 'bg-red-500', label: 'Swapping' },
       ]

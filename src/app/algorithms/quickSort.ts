@@ -191,7 +191,7 @@ export const quickSortUtils = {
             }
             
             if (currentStep.comparing && currentStep.comparing.includes(index)) {
-                  return 'bg-purple-500'
+                  return 'bg-purple-700'
             }
             
             if (currentStep.pivotIndex === index) {
@@ -219,7 +219,7 @@ export const quickSortUtils = {
       legend: [
             { color: 'bg-blue-500', label: 'Unsorted' },
             { color: 'bg-green-500', label: 'Sorted' },
-            { color: 'bg-purple-500', label: 'Comparing' },
+            { color: 'bg-purple-700', label: 'Comparing' },
             { color: 'bg-red-500', label: 'Swapping' },
             { color: 'bg-gray-300', label: 'Inactive' },
             { color: 'bg-yellow-500', label: 'Pivot' },

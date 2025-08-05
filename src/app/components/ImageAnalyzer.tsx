@@ -233,7 +233,7 @@ export default function ImageAnalyzer({ onArrayGenerated, onProcessedImageUrl }:
                   {analysisResults && (
                         <button
                               onClick={handleReverseImage}
-                              className="w-full p-2 mt-2 rounded-lg font-medium text-sm bg-purple-500 text-white hover:bg-purple-600 hover:scale-105 transition-all duration-200 cursor-pointer"
+                                                                  className="w-full p-2 mt-2 rounded-lg font-medium text-sm bg-purple-700 text-white hover:bg-purple-800 hover:scale-105 transition-all duration-200 cursor-pointer"
                         >
                               {isReversed ? 'Use Original Image' : 'Reverse Image'}
                         </button>
